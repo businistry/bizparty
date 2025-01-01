@@ -48,17 +48,25 @@ const ResultsDashboard = ({
 }: ResultsDashboardProps) => {
   if (isLoading) {
     return (
-      <div className="w-full h-full bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
-          <p className="mt-4 text-gray-500">Analyzing zip code {zipCode}...</p>
+      <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center rounded-xl">
+        <div className="text-center space-y-4">
+          <div className="relative">
+            <div className="w-16 h-16 border-4 border-blue-400/20 border-t-blue-400 rounded-full animate-spin" />
+            <div className="absolute inset-0 blur-xl bg-blue-400/20 rounded-full animate-pulse" />
+          </div>
+          <p className="text-lg text-slate-300">
+            Analyzing zip code {zipCode}...
+          </p>
+          <p className="text-sm text-slate-400">
+            Discovering business opportunities
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full bg-white p-6">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-xl">
       <div className="grid grid-cols-12 gap-6 h-full">
         {/* Business Recommendations Section */}
         <div className="col-span-4 h-full">

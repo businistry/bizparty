@@ -8,7 +8,7 @@ import {
 } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { ScrollArea } from "./ui/scroll-area";
-import { Building2, TrendingUp, Users } from "lucide-react";
+import { Building2, TrendingUp, Users, Star } from "lucide-react";
 
 interface BusinessRecommendation {
   id: string;
@@ -54,40 +54,33 @@ const defaultRecommendations: BusinessRecommendation[] = [
       customerBase: "Health-conscious adults",
     },
   },
-  {
-    id: "3",
-    businessType: "Tech Repair Shop",
-    confidenceScore: 72,
-    marketPotential: "High",
-    description:
-      "Electronics repair service with focus on mobile devices and laptops",
-    metrics: {
-      competition: "Low",
-      growthRate: "15% annually",
-      customerBase: "All demographics",
-    },
-  },
 ];
 
 const BusinessRecommendations = ({
   recommendations = defaultRecommendations,
 }: BusinessRecommendationsProps) => {
   return (
-    <div className="w-full h-full bg-white p-4">
-      <div className="mb-4">
-        <h2 className="text-2xl font-bold">Business Recommendations</h2>
-        <p className="text-gray-500">
-          Based on market analysis and demographic data
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-xl">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <Star className="h-6 w-6 text-yellow-400" />
+          Top Recommendations
+        </h2>
+        <p className="text-slate-400 mt-1">
+          AI-powered insights based on market analysis
         </p>
       </div>
 
       <ScrollArea className="h-[700px] pr-4">
         <div className="space-y-4">
           {recommendations.map((recommendation) => (
-            <Card key={recommendation.id} className="w-full">
+            <Card
+              key={recommendation.id}
+              className="w-full bg-white/5 backdrop-blur-sm border-white/10 hover:border-blue-400/30 transition-all duration-300 group"
+            >
               <CardHeader>
                 <div className="flex justify-between items-start">
-                  <CardTitle className="text-xl">
+                  <CardTitle className="text-xl text-white group-hover:text-blue-400 transition-colors">
                     {recommendation.businessType}
                   </CardTitle>
                   <Badge
@@ -96,29 +89,31 @@ const BusinessRecommendations = ({
                         ? "default"
                         : "secondary"
                     }
-                    className="ml-2"
+                    className="ml-2 bg-blue-500 hover:bg-blue-400"
                   >
                     {recommendation.confidenceScore}% Confidence
                   </Badge>
                 </div>
-                <CardDescription>{recommendation.description}</CardDescription>
+                <CardDescription className="text-slate-300">
+                  {recommendation.description}
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Building2 className="h-4 w-4 text-gray-500" />
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <Building2 className="h-4 w-4 text-blue-400" />
                     <span className="text-sm">
                       Competition: {recommendation.metrics.competition}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-gray-500" />
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <TrendingUp className="h-4 w-4 text-blue-400" />
                     <span className="text-sm">
                       Growth Rate: {recommendation.metrics.growthRate}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-gray-500" />
+                  <div className="flex items-center gap-2 text-slate-300">
+                    <Users className="h-4 w-4 text-blue-400" />
                     <span className="text-sm">
                       Target Customers: {recommendation.metrics.customerBase}
                     </span>
@@ -129,7 +124,7 @@ const BusinessRecommendations = ({
                         ? "default"
                         : "outline"
                     }
-                    className="mt-2"
+                    className={`mt-2 ${recommendation.marketPotential === "High" ? "bg-green-500 hover:bg-green-400" : "text-slate-300 border-slate-300"}`}
                   >
                     {recommendation.marketPotential} Market Potential
                   </Badge>
