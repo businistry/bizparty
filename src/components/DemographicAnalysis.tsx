@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Progress } from "./ui/progress";
-import { BarChart, Users, DollarSign, Building, ChartBar } from "lucide-react";
+import { BarChart, Users, DollarSign, Building } from "lucide-react";
 
 interface DemographicData {
   populationDensity: number;
@@ -49,7 +49,7 @@ const DemographicAnalysis = ({
     <Card className="w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 border-white/10 hover:border-blue-400/30 transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
-          <ChartBar className="h-5 w-5 text-blue-400" />
+          <BarChart className="h-5 w-5 text-blue-400" />
           Demographic Analysis
         </CardTitle>
       </CardHeader>
